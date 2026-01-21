@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pattern Brushes & Graphic Elements - Digital Skills</title>
+<style>
+:root {
+  --primary: #ea37a3;
+  --primary-light: #fdf1f5;
+  --secondary: #0a8080;
+  --secondary-light: #f5ffff;
+  --dark: #222;
+  --light: #fff;
+  --grid-light: #e0e0e0;
+  --homework: #ea37a3;
+  --homework-light: #fdf1f5;
+  --inclass: #0a8080;
+  --inclass-light: #f5ffff;
+  --homework-banner: #ffebf5;
+  --inclass-banner: #e6ffff;
+  --quiz: #4682b4;
+  --quiz-light: #f0f8ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Typewriter Condensed", "Courier New", monospace;
+  background-image:
+    linear-gradient(var(--grid-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-light) 1px, transparent 1px);
+  background-size: 20px 20px, 20px 20px;
+  background-attachment: fixed;
+  color: var(--dark);
+  padding: 20px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.97);
+  border: 3px solid var(--primary);
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* Block-based navigation */
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.main-navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.nav-block {
+  background: #f8f8f8;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.nav-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.nav-block h3 {
+  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-block p {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-overview {
+  border-color: var(--secondary);
+  background-color: var(--secondary-light);
+}
+
+.nav-overview h3 {
+  color: var(--secondary);
+}
+
+.nav-task1 {
+  border-color: var(--inclass);
+  background-color: var(--inclass-light);
+}
+
+.nav-task1 h3 {
+  color: var(--inclass);
+}
+
+.nav-task2 {
+  border-color: var(--homework);
+  background-color: var(--homework-light);
+}
+
+.nav-task2 h3 {
+  color: var(--homework);
+}
+
+.nav-task3 {
+  border-color: var(--quiz);
+  background-color: var(--quiz-light);
+}
+
+.nav-task3 h3 {
+  color: var(--quiz);
+}
+
+.active-block {
+  background-color: var(--secondary);
+  color: white;
+  box-shadow: 0 8px 20px rgba(10, 128, 128, 0.3);
+  transform: translateY(-5px);
+}
+
+.active-block h3, .active-block p {
+  color: white;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0 20px;
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.prev-btn {
+  background-color: #f2f2f2;
+  color: #555;
+}
+
+.prev-btn::before {
+  content: "←";
+}
+
+.next-btn {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.next-btn::after {
+  content: "→";
+}
+
+.progress-bar-container {
+  height: 10px;
+  background-color: #eee;
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--secondary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* Typography */
+h1, h2, h3 {
+  font-family: "Typewriter Condensed", "Courier New", monospace;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.8em;
+}
+
+h1 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 15px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--secondary);
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+h2::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 25px;
+  background: var(--primary);
+  margin-right: 15px;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+  font-size: 1.1rem;
+}
+
+/* Video tutorials */
+.video-tutorial {
+  margin: 30px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border: 2px solid var(--secondary);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-caption {
+  background: var(--secondary);
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Workflow box */
+.workflow-box {
+  background: #f8f8f8;
+  margin: 35px 0;
+  border-radius: 15px;
+  border: 3px solid var(--secondary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.workflow-header {
+  background: var(--secondary);
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.workflow-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.workflow-steps {
+  padding: 20px 25px;
+}
+
+.step {
+  position: relative;
+  padding: 20px 20px 20px 50px;
+  background: white;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.step-number {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.step-title {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.step-content ul, .step-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.step-content li {
+  margin-bottom: 8px;
+}
+
+.step-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  max-height: 300px;
+  border-radius: 8px;
+  margin: 15px auto;
+  display: block;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 2px solid #eee;
+  object-fit: contain;
+}
+
+.step-image:hover {
+  transform: scale(1.03);
+  border-color: var(--secondary);
+}
+
+/* Term explanation box */
+.term-box {
+  background: #f8f9fa;
+  border-left: 6px solid #17a2b8;
+  padding: 15px 20px;
+  margin: 20px 0;
+  font-size: 1rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  border-radius: 0 8px 8px 0;
+}
+
+.term-box strong {
+  color: #17a2b8;
+}
+
+.term-box ul {
+  margin-left: 25px;
+  margin-top: 10px;
+}
+
+.term-box li {
+  margin-bottom: 8px;
+}
+
+/* Important notice */
+.important-notice {
+  margin-bottom: 20px; 
+  padding: 15px 20px; 
+  background: rgba(234, 55, 163, 0.15); 
+  border-left: 5px solid var(--primary); 
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.important-notice strong {
+  color: var(--primary);
+}
+
+/* Shortcut */
+.shortcut {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 1em;
+  margin: 0 2px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+/* Example section */
+.example-section {
+  background: #f8f8f8; 
+  padding: 30px; 
+  border-radius: 15px; 
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.example-title {
+  color: var(--secondary); 
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 25px;
+}
+
+.example-image-container {
+  text-align: center; 
+  margin-bottom: 25px;
+}
+
+.example-image {
+  width: 90%; 
+  max-width: 700px; 
+  border: 3px solid #ddd; 
+  border-radius: 10px; 
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+  max-height: 500px;
+}
+
+.example-image:hover {
+  transform: scale(1.02);
+  border-color: var(--secondary);
+}
+
+/* Workshop Overview Styling */
+.workshop-overview {
+  margin: 35px 0;
+  border-radius: 15px;
+  border: 3px solid var(--secondary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  background: #f8f8f8;
+}
+
+.workshop-header {
+  background: var(--secondary);
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.workshop-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+.workshop-title {
+  padding: 20px 25px 10px 25px;
+}
+
+.workshop-title h3 {
+  color: var(--secondary);
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 0 0 20px 0;
+  border-bottom: 2px dashed var(--secondary);
+  padding-bottom: 15px;
+}
+
+.workshop-content {
+  padding: 0 25px 25px 25px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.workshop-image {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border: 3px solid white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.workshop-image:hover {
+  transform: scale(1.03);
+}
+
+.workshop-learning-points {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.learning-points-title {
+  color: var(--primary);
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  border-left: 5px solid var(--primary);
+  padding-left: 15px;
+}
+
+.learning-points-list {
+  list-style-type: none;
+  padding-left: 5px;
+}
+
+.learning-points-item {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.learning-points-item::before {
+  content: "•";
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* Technique grid */
+.technique-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.technique-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  border: 2px solid var(--secondary-light);
+}
+
+.technique-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--secondary);
+}
+
+.technique-header {
+  background: var(--secondary-light);
+  padding: 15px 20px;
+  color: var(--secondary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 2px solid #eee;
+}
+
+.technique-content {
+  padding: 20px;
+}
+
+.technique-content ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.technique-content li {
+  margin-bottom: 10px;
+}
+
+.technique-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  border: 2px solid #eee;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+.technique-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border-color: var(--secondary);
+}
+
+/* Prep box */
+.prep-box {
+  border: 3px dashed var(--primary);
+  border-radius: 12px;
+  padding: 25px;
+  margin: 30px 0;
+  background-color: var(--primary-light);
+  position: relative;
+}
+
+.prep-box h3 {
+  color: var(--primary);
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Tip box */
+.tip-box {
+  background: linear-gradient(135deg, #e8f5e9 0%, #fff 100%);
+  border: 2px solid #28a745;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.tip-box h4 {
+  color: #28a745;
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.tip-box p {
+  margin-bottom: 10px;
+}
+
+/* Checklist */
+.checklist {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  margin: 30px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 2px solid var(--secondary);
+}
+
+.checklist h3 {
+  color: var(--secondary);
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px dashed var(--secondary);
+  padding-bottom: 10px;
+}
+
+.checklist-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.checklist-checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--secondary);
+  border-radius: 5px;
+  margin-right: 15px;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.checklist-checkbox.checked::after {
+  content: "✓";
+  position: absolute;
+  color: var(--secondary);
+  font-size: 20px;
+  top: -4px;
+  left: 4px;
+  font-weight: bold;
+}
+
+.checklist-text {
+  flex-grow: 1;
+}
+
+.checklist-label {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+/* Modal for image viewing */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  overflow: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid white;
+  border-radius: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 1001;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Section banners */
+.section-banner {
+  margin: 25px 0;
+  padding: 15px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 100%;
+}
+
+.inclass-banner {
+  background-color: var(--inclass-banner);
+  border: 2px solid var(--inclass);
+  color: var(--inclass);
+}
+
+.inclass-banner::before {
+  background-color: var(--inclass);
+}
+
+.homework-banner {
+  background-color: var(--homework-banner);
+  border: 2px solid var(--homework);
+  color: var(--homework);
+}
+
+.homework-banner::before {
+  background-color: var(--homework);
+}
+
+.quiz-banner {
+  background-color: var(--quiz-light);
+  border: 2px solid var(--quiz);
+  color: var(--quiz);
+}
+
+.quiz-banner::before {
+  background-color: var(--quiz);
+}
+
+.inclass-label, .task-label {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-left: 15px;
+  vertical-align: middle;
+}
+
+.inclass-label {
+  background-color: var(--inclass);
+  color: white;
+}
+
+.task-label {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Image container for centered images */
+.image-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+/* Reminder box */
+.reminder-box {
+  background: linear-gradient(135deg, #e3f2fd 0%, #fff 100%);
+  border: 2px solid #1976d2;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.reminder-box h4 {
+  color: #1976d2;
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.reminder-box ul {
+  margin-left: 20px;
+}
+
+.reminder-box li {
+  margin-bottom: 8px;
+}
+
+/* Print button */
+.print-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.print-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+@media print {
+  .print-button {
+    display: none;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .container {
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .workshop-content {
+    grid-template-columns: 1fr;
+  }
+  .workflow-steps {
+    padding: 15px;
+  }
+  .step {
+    padding: 15px 15px 15px 40px;
+  }
+  .step-number {
+    width: 32px;
+    height: 32px;
+    left: -5px;
+    font-size: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Pattern Brushes & Graphic Elements</h1>
+  <p style="text-align: center; font-size: 1.2rem; color: #666;">Make Graphic Elements Using Your Drawings and Collages</p>
+
+  <!-- Workshop Structure Overview -->
+  <div style="background: #f5f5f5; padding: 20px; border-radius: 10px; margin-bottom: 30px; border: 2px dashed #666;">
+    <h3 style="text-align: center; margin-top: 0; color: #333;">What You Will Learn</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 15px;">
+      <div style="flex: 1; min-width: 200px; background: var(--inclass-banner); padding: 15px; border-radius: 8px; border-left: 5px solid var(--inclass);">
+        <h4 style="margin-top: 0; color: var(--inclass);">TASK 1</h4>
+        <p style="margin-bottom: 0;">Make a pattern brush</p>
+      </div>
+      <div style="flex: 1; min-width: 200px; background: var(--homework-banner); padding: 15px; border-radius: 8px; border-left: 5px solid var(--homework);">
+        <h4 style="margin-top: 0; color: var(--homework);">TASK 2</h4>
+        <p style="margin-bottom: 0;">Add to your design pages</p>
+      </div>
+      <div style="flex: 1; min-width: 200px; background: var(--quiz-light); padding: 15px; border-radius: 8px; border-left: 5px solid var(--quiz);">
+        <h4 style="margin-top: 0; color: var(--quiz);">TASK 3</h4>
+        <p style="margin-bottom: 0;">Save your progress</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Block-based navigation -->
+  <div class="main-navigation">
+    <div class="nav-block nav-overview" data-section="overview">
+      <h3>Overview</h3>
+      <p>Introduction</p>
+    </div>
+    <div class="nav-block nav-task1" data-section="task1">
+      <h3>Task 1</h3>
+      <p>Pattern Brush</p>
+    </div>
+    <div class="nav-block nav-task2" data-section="task2">
+      <h3>Task 2</h3>
+      <p>Integration</p>
+    </div>
+    <div class="nav-block nav-task3" data-section="task3">
+      <h3>Task 3</h3>
+      <p>Document</p>
+    </div>
+  </div>
+  
+  <!-- ==================== OVERVIEW SECTION ==================== -->
+  <div id="overview" class="content-section active">
+    <div class="workshop-overview">
+      <div class="workshop-header">
+        <h3>Workshop Overview</h3>
+      </div>
+      
+      <div class="workshop-title">
+        <h3>Make Pattern Brushes from Your Drawings & Collages</h3>
+      </div>
+      
+      <div class="workshop-content">
+        <div>
+          <img src="pattern-brush-example.jpg" alt="Example of pattern brush on a design page" class="workshop-image" onclick="openModal(this.src)">
+        </div>
+        
+        <div class="workshop-learning-points">
+          <h4 class="learning-points-title">You Will Learn To:</h4>
+          <ul class="learning-points-list">
+            <li class="learning-points-item">Make a pattern brush from your artwork</li>
+            <li class="learning-points-item">Clean up images for patterns</li>
+            <li class="learning-points-item">Apply patterns along paths</li>
+            <li class="learning-points-item">Link images visually</li>
+            <li class="learning-points-item">Improve your page layouts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Homework prep box -->
+    <div class="prep-box">
+      <h3>📋 What You Need</h3>
+      <ul style="margin-left: 25px;">
+        <li>A drawing or collage that connects to your research</li>
+        <li>Adobe Photoshop (desktop version)</li>
+      </ul>
+    </div>
+
+    <!-- Why use pattern brushes? -->
+    <h2>Why Use Pattern Brushes?</h2>
+    
+    <div class="term-box">
+      <strong>Pattern brushes help you:</strong>
+      <ul>
+        <li><strong>Connect elements</strong> – link different parts of your page</li>
+        <li><strong>Add personality</strong> – use your own drawings</li>
+        <li><strong>Tell a story</strong> – guide the viewer's eye</li>
+        <li><strong>Make it unique</strong> – show your research theme</li>
+      </ul>
+    </div>
+
+    <div class="important-notice">
+      <strong>Important:</strong> Choose drawings that connect to your research. The pattern should help your design, not distract from it.
+    </div>
+
+    <!-- Example Research Pages -->
+    <h2>Example Research Pages</h2>
+    <p>These pages show how artists' work can be explored and how pattern brushes can be used visually.</p>
+
+    <div class="example-section">
+      <h3 class="example-title">Research Page Examples with Pattern Brushes</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+        <div>
+          <div class="image-container">
+            <img src="renato-dib-page.jpg" alt="Renato Dib research page example" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Renato Dib: Within the Sphere of Intimacy</p>
+        </div>
+        <div>
+          <div class="image-container">
+            <img src="grayson-perry-page.jpg" alt="Grayson Perry research page example" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Grayson Perry RA</p>
+        </div>
+        <div>
+          <div class="image-container">
+            <img src="josephine-baker-page.jpg" alt="Josephine Baker research page example" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Josephine Baker</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="nav-btn prev-btn" disabled>Previous</button>
+      <button class="nav-btn next-btn" onclick="goToSection('task1')">Next: Task 1</button>
+    </div>
+  </div>
+
+  <!-- ==================== TASK 1: CREATE PATTERN BRUSH ==================== -->
+  <div id="task1" class="content-section">
+    <div class="section-banner inclass-banner">
+      TASK 1: Make a Pattern Brush
+    </div>
+
+    <p style="font-size: 1.15rem; text-align: center; margin-bottom: 30px;">
+      Make a pattern brush from your drawing or collage.
+    </p>
+
+    <!-- Video Tutorial -->
+    <div class="video-tutorial">
+      <h4 style="background: var(--inclass); color: white; padding: 12px 20px; margin: 0; font-size: 1.2rem;">Video: How to Make a Pattern Brush</h4>
+      <div class="video-wrapper">
+        <iframe 
+          src="https://ual.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=de381446-b063-44cd-9b98-b21800bcbf15&autoplay=false&offerviewer=true&showtitle=false&showbrand=false&captions=false&interactivity=all" 
+          style="border: 1px solid #464646;" 
+          allowfullscreen 
+          allow="autoplay">
+        </iframe>
+      </div>
+      <div class="video-caption">
+        Watch how to create and apply a pattern brush in Photoshop
+      </div>
+    </div>
+
+    <!-- Step-by-step process -->
+    <h2>Step-by-Step Guide <span class="inclass-label">In-Class</span></h2>
+
+    <div class="workflow-box">
+      <div class="workflow-header">
+        <h3>Step 1: Prepare Your Image</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-title">Open Your Drawing or Collage</div>
+          <div class="step-content">
+            <ol>
+              <li>Open your image in Photoshop</li>
+              <li>Cut out the part you want to use</li>
+              <li>Copy and paste it onto a new layer</li>
+              <li>Delete the background</li>
+            </ol>
+            <div class="image-container">
+              <img src="step1-prepare-image.png" alt="Preparing image for pattern brush" class="step-image" onclick="openModal(this.src)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-box">
+      <div class="workflow-header">
+        <h3>Step 2: Increase Contrast</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-title">Adjust Levels</div>
+          <div class="step-content">
+            <ol>
+              <li>Go to <span class="shortcut">Image → Adjustments → Levels</span></li>
+              <li>Move the sliders to make the image clearer</li>
+            </ol>
+            <div class="image-container">
+              <img src="step2-levels.png" alt="Adjusting levels for contrast" class="step-image" onclick="openModal(this.src)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-box">
+      <div class="workflow-header">
+        <h3>Step 3: Clean Up the Image</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-title">Remove Unwanted Areas</div>
+          <div class="step-content">
+            <ol>
+              <li>Use the <strong>Elliptical Marquee Tool</strong> to select white areas</li>
+              <li>Go to <span class="shortcut">Select → Similar</span>, then press <span class="shortcut">Delete</span></li>
+              <li>Press <span class="shortcut">Cmd + D</span> (Mac) / <span class="shortcut">Ctrl + D</span> (Windows) to deselect</li>
+              <li>Use the <strong>Crop Tool</strong> to crop tightly around your image</li>
+              <li>Click the <strong>✓ (tick)</strong> to apply</li>
+            </ol>
+            <div class="image-container">
+              <img src="step3-cleanup.png" alt="Cleaning up the image" class="step-image" onclick="openModal(this.src)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-box">
+      <div class="workflow-header">
+        <h3>Step 4: Create the Pattern</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-title">Define Your Pattern</div>
+          <div class="step-content">
+            <ol>
+              <li>Make sure the correct layer is selected</li>
+              <li>Go to <span class="shortcut">Edit → Define Pattern</span></li>
+              <li>Give your pattern a clear name</li>
+              <li>Click <strong>OK</strong></li>
+            </ol>
+            <div class="tip-box">
+              <h4>✅ Done!</h4>
+              <p>Your pattern is now saved.</p>
+            </div>
+            <div class="image-container">
+              <img src="step4-define-pattern.png" alt="Defining the pattern" class="step-image" onclick="openModal(this.src)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-box">
+      <div class="workflow-header">
+        <h3>Step 5: Apply the Pattern</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-title">Use Your Pattern</div>
+          <div class="step-content">
+            <ol>
+              <li>Open a design page (or a blank page to test)</li>
+              <li>Use the <strong>Pen Tool</strong> to draw a path</li>
+              <li>Create a new layer</li>
+              <li>Go to <span class="shortcut">Edit → Fill</span></li>
+              <li>Choose <strong>Pattern</strong> and select your pattern</li>
+              <li>Click <strong>OK</strong></li>
+            </ol>
+            <div class="image-container">
+              <img src="step5-apply-pattern.png" alt="Applying the pattern" class="step-image" onclick="openModal(this.src)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="workflow-box">
+      <div class="workflow-header">
+        <h3>Step 6: Experiment</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number">6</div>
+          <div class="step-title">Try Different Options</div>
+          <div class="step-content">
+            <ul>
+              <li>Change the size and spacing</li>
+              <li>Try different paths (straight, curved)</li>
+              <li>To remove the blue path line: open the <strong>Paths panel</strong> and delete the Work Path</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <h4>💡 Take Your Time</h4>
+      <p>Play and experiment. Good results come from trying different options.</p>
+    </div>
+
+    <!-- Student Examples for Task 1 -->
+    <h2>Student Examples: Task 1</h2>
+
+    <div class="example-section">
+      <h3 class="example-title">Pattern Brush Experiments</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+        <div>
+          <div class="image-container">
+            <img src="task1-student-example-01.jpg" alt="Student Task 1 example 1" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Pattern from hand-drawn elements</p>
+        </div>
+        <div>
+          <div class="image-container">
+            <img src="task1-student-example-02.jpg" alt="Student Task 1 example 2" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Testing different paths</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 1 Checklist -->
+    <h2>Task 1 Checklist</h2>
+
+    <div class="checklist">
+      <h3>You Must Complete:</h3>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Prepared image with background removed</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Adjusted contrast using Levels</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Cleaned up and cropped image</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Defined and named your pattern</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Applied pattern to a test page</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Tried different sizes and paths</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload section -->
+    <div style="background: var(--inclass-light); padding: 25px; border-radius: 12px; border: 2px solid var(--inclass); margin: 30px 0; text-align: center;">
+      <h3 style="color: var(--inclass); margin-top: 0;">Upload Task 1 to Padlet</h3>
+      <p>Share your pattern brush experiments.</p>
+      <a href="https://artslondon.padlet.org/hstokes12/w8-digital-skills-j3wxhl8ogpu8u6w3" target="_blank" style="display: inline-block; background: var(--inclass); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin-top: 10px;">
+        Upload to Padlet →
+      </a>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="nav-btn prev-btn" onclick="goToSection('overview')">Previous: Overview</button>
+      <button class="nav-btn next-btn" onclick="goToSection('task2')">Next: Task 2</button>
+    </div>
+  </div>
+
+  <!-- ==================== TASK 2: DIGITAL INTEGRATION ==================== -->
+  <div id="task2" class="content-section">
+    <div class="section-banner homework-banner">
+      TASK 2: Add to Your Design Pages
+    </div>
+
+    <p style="font-size: 1.15rem; text-align: center; margin-bottom: 30px;">
+      Add your pattern brush to a design page in Photoshop.
+    </p>
+
+    <!-- Reminders -->
+    <h2>Page Requirements</h2>
+
+    <div class="reminder-box">
+      <h4>📋 Design Development Pages Must Include:</h4>
+      <ul>
+        <li>Research links that connect to your design ideas</li>
+        <li>Clear subtitles (use a light monospaced font)</li>
+      </ul>
+    </div>
+
+    <div class="reminder-box">
+      <h4>📋 Research Pages Should Include:</h4>
+      <ul>
+        <li>Different types of research</li>
+        <li>Clear subtitles</li>
+        <li>Written notes showing your understanding</li>
+      </ul>
+    </div>
+
+    <!-- How to integrate -->
+    <h2>How to Use Pattern Brushes</h2>
+
+    <div class="technique-grid">
+      <div class="technique-card" style="border-color: var(--homework-light);">
+        <div class="technique-header" style="background: var(--homework-light); color: var(--homework);">Visual Links</div>
+        <div class="technique-content">
+          <ul>
+            <li>Connect related images</li>
+            <li>Guide the viewer's eye</li>
+            <li>Frame content areas</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="technique-card" style="border-color: var(--homework-light);">
+        <div class="technique-header" style="background: var(--homework-light); color: var(--homework);">Balance</div>
+        <div class="technique-content">
+          <ul>
+            <li>Don't overcrowd the page</li>
+            <li>Leave empty space</li>
+            <li>Balance text and images</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <h4>💡 Take Your Time</h4>
+      <p>Play and experiment. Good results come from trying different options.</p>
+    </div>
+
+    <!-- Student Examples for Task 2 -->
+    <h2>Student Examples: Task 2</h2>
+
+    <div class="example-section">
+      <h3 class="example-title">Finished Design Pages</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+        <div>
+          <div class="image-container">
+            <img src="task2-student-example-01.jpg" alt="Student Task 2 example 1" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Pattern brush with research images</p>
+        </div>
+        <div>
+          <div class="image-container">
+            <img src="task2-student-example-02.jpg" alt="Student Task 2 example 2" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Visual links connecting elements</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 2 Checklist -->
+    <h2>Task 2 Checklist</h2>
+
+    <div class="checklist">
+      <h3>You Must Include:</h3>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Pattern brush on your design page</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Visual links between elements</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Clear subtitles</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Research images</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Balanced layout</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload section -->
+    <div style="background: var(--homework-light); padding: 25px; border-radius: 12px; border: 2px solid var(--homework); margin: 30px 0; text-align: center;">
+      <h3 style="color: var(--homework); margin-top: 0;">Upload Task 2 to Padlet</h3>
+      <p>Share your finished design page.</p>
+      <a href="https://artslondon.padlet.org/hstokes12/w8-digital-skills-j3wxhl8ogpu8u6w3" target="_blank" style="display: inline-block; background: var(--homework); color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; margin-top: 10px;">
+        Upload to Padlet →
+      </a>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="nav-btn prev-btn" onclick="goToSection('task1')">Previous: Task 1</button>
+      <button class="nav-btn next-btn" onclick="goToSection('task3')">Next: Task 3</button>
+    </div>
+  </div>
+
+  <!-- ==================== TASK 3: PROGRESS DOCUMENTATION ==================== -->
+  <div id="task3" class="content-section">
+    <div class="section-banner quiz-banner">
+      TASK 3: Save Your Progress
+    </div>
+
+    <p style="font-size: 1.15rem; text-align: center; margin-bottom: 30px;">
+      Document your work and write about what you learned.
+    </p>
+
+    <!-- Why document -->
+    <h2>Why Save Your Progress?</h2>
+
+    <div class="term-box">
+      <strong>Documenting helps you:</strong>
+      <ul>
+        <li><strong>Show your work</strong> – tutors see how you improved</li>
+        <li><strong>Remember skills</strong> – useful for future projects</li>
+        <li><strong>Reflect</strong> – understand what worked well</li>
+      </ul>
+    </div>
+
+    <!-- How to document -->
+    <h2>How to Document</h2>
+
+    <div class="workflow-box" style="border-color: var(--quiz);">
+      <div class="workflow-header" style="background: var(--quiz);">
+        <h3>Use the Progress Tool</h3>
+      </div>
+      <div class="workflow-steps">
+        <div class="step">
+          <div class="step-number" style="background: var(--quiz);">1</div>
+          <div class="step-title" style="color: var(--quiz);">Open the Tool</div>
+          <div class="step-content">
+            <a href="https://hsstokes.github.io/Progress_Documentation/" target="_blank" style="display: inline-block; background: var(--quiz); color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; margin: 10px 0;">Open Progress Tool →</a>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number" style="background: var(--quiz);">2</div>
+          <div class="step-title" style="color: var(--quiz);">Add Screenshots</div>
+          <div class="step-content">
+            <ul>
+              <li>Take screenshots as you work</li>
+              <li>Upload them to the tool</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number" style="background: var(--quiz);">3</div>
+          <div class="step-title" style="color: var(--quiz);">Write Notes</div>
+          <div class="step-content">
+            <ul>
+              <li>What did you learn?</li>
+              <li>What was difficult?</li>
+              <li>What worked well?</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number" style="background: var(--quiz);">4</div>
+          <div class="step-title" style="color: var(--quiz);">Screenshot Your Documentation</div>
+          <div class="step-content">
+            <ul>
+              <li><strong>Mac:</strong> <span class="shortcut">Command + Shift + 3</span></li>
+              <li><strong>Windows:</strong> <span class="shortcut">Windows + Shift + S</span></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step-number" style="background: var(--quiz);">5</div>
+          <div class="step-title" style="color: var(--quiz);">Upload to Padlet</div>
+          <div class="step-content">
+            <p>Submit your screenshot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Examples for Task 3 -->
+    <h2>Student Examples: Task 3</h2>
+
+    <div class="example-section">
+      <h3 class="example-title">Progress Documentation</h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+        <div>
+          <div class="image-container">
+            <img src="task3-student-example-01.jpg" alt="Student Task 3 example 1" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Process with screenshots</p>
+        </div>
+        <div>
+          <div class="image-container">
+            <img src="task3-student-example-02.jpg" alt="Student Task 3 example 2" class="example-image" onclick="openModal(this.src)">
+          </div>
+          <p style="text-align: center; font-style: italic;">Reflection notes</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task 3 Checklist -->
+    <h2>Task 3 Checklist</h2>
+
+    <div class="checklist">
+      <h3>You Must Include:</h3>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Screenshots of your process</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Notes about what you learned</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">What was difficult and how you solved it</div>
+        </div>
+      </div>
+      <div class="checklist-item">
+        <div class="checklist-checkbox" onclick="toggleChecked(this)"></div>
+        <div class="checklist-text">
+          <div class="checklist-label">Final screenshot of documentation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submission section -->
+    <h2>Submit Your Work</h2>
+
+    <div style="background: linear-gradient(135deg, var(--secondary-light) 0%, #fff 100%); padding: 30px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin: 30px 0; border: 3px solid var(--secondary);">
+      <h3 style="color: var(--secondary); text-align: center; margin-top: 0; margin-bottom: 25px;">Upload All Tasks to Padlet</h3>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 25px;">
+        <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-left: 5px solid var(--inclass);">
+          <h4 style="color: var(--inclass); margin-top: 0; font-size: 1.1rem; margin-bottom: 10px;">1. Task 1</h4>
+          <p style="margin-bottom: 0;">Pattern brush experiments</p>
+        </div>
+        
+        <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-left: 5px solid var(--homework);">
+          <h4 style="color: var(--homework); margin-top: 0; font-size: 1.1rem; margin-bottom: 10px;">2. Task 2</h4>
+          <p style="margin-bottom: 0;">Finished design page</p>
+        </div>
+        
+        <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-left: 5px solid var(--quiz);">
+          <h4 style="color: var(--quiz); margin-top: 0; font-size: 1.1rem; margin-bottom: 10px;">3. Task 3</h4>
+          <p style="margin-bottom: 0;">Progress documentation</p>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="https://artslondon.padlet.org/hstokes12/w8-digital-skills-j3wxhl8ogpu8u6w3" target="_blank" style="display: inline-block; background: var(--secondary); color: white; padding: 18px 40px; border-radius: 10px; text-decoration: none; font-weight: bold; font-size: 1.3rem; box-shadow: 0 5px 20px rgba(10, 128, 128, 0.4); transition: all 0.3s ease;">
+          Submit to Padlet →
+        </a>
+      </div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="nav-btn prev-btn" onclick="goToSection('task2')">Previous: Task 2</button>
+      <button class="nav-btn next-btn" onclick="goToSection('overview')">Back to Start</button>
+    </div>
+  </div>
+
+  <!-- Modal for image viewing -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+</div>
+
+<button class="print-button" onclick="window.print()">🖨️</button>
+
+<script>
+// Image Modal Functionality
+function openModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  modal.style.display = "block";
+  modalImg.src = src;
+}
+
+// Section Navigation
+const sections = ['overview', 'task1', 'task2', 'task3'];
+let currentSection = 'overview';
+
+function goToSection(sectionId) {
+  if (!sectionId) return;
+  
+  // Hide all sections
+  document.querySelectorAll('.content-section').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  // Show the selected section
+  document.getElementById(sectionId).classList.add('active');
+  
+  // Update active navigation block
+  document.querySelectorAll('.nav-block').forEach(block => {
+    block.classList.remove('active-block');
+    if (block.dataset.section === sectionId) {
+      block.classList.add('active-block');
+    }
+  });
+  
+  // Update current section
+  currentSection = sectionId;
+  
+  // Update progress bar
+  updateProgressBar();
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+
+function updateProgressBar() {
+  const progressBar = document.getElementById('progressBar');
+  const index = sections.indexOf(currentSection);
+  const percentage = ((index + 1) / sections.length) * 100;
+  progressBar.style.width = `${percentage}%`;
+}
+
+// Toggle checklist items
+function toggleChecked(element) {
+  element.classList.toggle('checked');
+  
+  // Save state to localStorage
+  const checkboxes = document.querySelectorAll('.checklist-checkbox');
+  const states = Array.from(checkboxes).map(checkbox => checkbox.classList.contains('checked'));
+  localStorage.setItem('pattern-brush-checklist', JSON.stringify(states));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('imageModal');
+  const closeBtn = document.getElementsByClassName('close')[0];
+  
+  // Close modal when clicking the × symbol
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+  }
+  
+  // Close modal when clicking outside the image
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+  
+  // Set up navigation blocks
+  document.querySelectorAll('.nav-block').forEach(block => {
+    block.addEventListener('click', () => {
+      goToSection(block.dataset.section);
+    });
+  });
+  
+  // Initialize progress bar and active section
+  document.querySelector('.nav-block[data-section="overview"]').classList.add('active-block');
+  updateProgressBar();
+  
+  // Load saved checklist state
+  const savedStates = localStorage.getItem('pattern-brush-checklist');
+  if (savedStates) {
+    const states = JSON.parse(savedStates);
+    const checkboxes = document.querySelectorAll('.checklist-checkbox');
+    checkboxes.forEach((checkbox, index) => {
+      if (index < states.length && states[index]) {
+        checkbox.classList.add('checked');
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>
