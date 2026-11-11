@@ -367,6 +367,9 @@ code.prompt { font-family:'Space Mono',monospace; background:var(--ink); color:#
 .print-btn { position:fixed; right:16px; bottom:16px; width:46px; height:46px; border:2px solid var(--ink); background:#fff; font-size:1.2rem; cursor:pointer; }
 @media print { .print-btn, nav, .pager, .progress-wrap { display:none !important; } .section { display:block !important; } }
 
+
+/* screenshot slots: hidden until the file exists */
+.shot { display:block; max-width:100%; width:520px; height:auto; border:2px solid #1a1a1a; margin:10px 0; cursor:zoom-in; }
 </style>
 </head>
 <body>
@@ -482,19 +485,19 @@ code.prompt { font-family:'Space Mono',monospace; background:var(--ink); color:#
       <button class="step-head"><span class="step-num bg-teal">5</span>Apply the pattern<span class="arrow">▶</span></button>
       <div class="step-body">
         <ol><li>Open a design page (or a blank page to test)</li><li>Use the <strong>Pen Tool</strong> <span class="key">P</span> to draw a path</li><li>Create a new layer</li><li>Go to <span class="path">Edit › Fill</span></li><li>Choose <strong>Pattern</strong> and select your pattern</li><li>Tick <strong>Script</strong> and choose <strong>Place Along Path</strong></li><li>Click <strong>OK</strong></li></ol><img src="step5-apply-pattern.png" alt="Apply pattern" class="zoom">
-      </div>
+      <img class="shot" src="shots/fill-place-along-path.png" alt="Fill window: Pattern, Script, Place Along Path" loading="lazy" onerror="this.remove()" onclick="window.open(this.src)"></div>
     </div>
     <div class="step">
       <button class="step-head"><span class="step-num bg-teal">6</span>Experiment<span class="arrow">▶</span></button>
       <div class="step-body">
         <ul><li>Change the size and spacing</li><li>Try different paths (straight, curved)</li><li>To remove the blue path line: open the <strong>Paths panel</strong> and delete the Work Path</li></ul>
-      </div>
+      <img class="shot" src="shots/paths-panel-work-path.png" alt="Paths panel with Work Path" loading="lazy" onerror="this.remove()" onclick="window.open(this.src)"></div>
     </div>
     <div class="step">
       <button class="step-head"><span class="step-num bg-teal">7</span>Export a JPEG<span class="arrow">▶</span></button>
       <div class="step-body">
         <ul><li>Go to <span class="path">File › Export › Export As…</span> › Format: <strong>JPG</strong></li><li>Click <strong>Export</strong></li><li>You need it for Task 3 and Padlet</li></ul>
-      </div>
+      <img class="shot" src="https://hsstokes.github.io/Creating-Stencils---Digital-Brushes/shots/export-as-jpg.png" alt="Export As window, Format JPG" loading="lazy" onerror="this.remove()" onclick="window.open(this.src)"></div>
     </div>
     <div class="box teal">
       <strong>💡 Take your time</strong>
